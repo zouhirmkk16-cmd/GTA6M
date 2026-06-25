@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grand Theft Auto VI - Mobile Early Access</title>
+    <title>Grand Theft Auto VI - Early Access Distribution</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,13 +12,6 @@
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: #0b0813;
-        }
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
         }
     </style>
 </head>
@@ -103,7 +96,7 @@
                     </button>
                 </div>
 
-                <button type="button" id="submit-btn" onclick="triggerContentLocker()" class="w-full bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white font-bold uppercase tracking-wider py-4 rounded-xl shadow-lg cursor-pointer transform active:scale-[0.99] transition-all">
+                <button type="button" id="submit-btn" onclick="startLoadingBar()" class="w-full bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white font-bold uppercase tracking-wider py-4 rounded-xl shadow-lg cursor-pointer transform active:scale-[0.99] transition-all">
                     Proceed to Download
                 </button>
                 
@@ -114,6 +107,18 @@
                 </div>
             </div>
 
+            <div id="step-3" class="hidden space-y-5 text-center py-4">
+                <h3 id="progress-status" class="text-sm font-semibold tracking-wide uppercase text-amber-500 animate-pulse">
+                    Connecting to server...
+                </h3>
+                <div class="w-full bg-white/10 rounded-full h-4 p-0.5 border border-white/5 overflow-hidden">
+                    <div id="progress-fill" class="h-full w-0 rounded-full bg-gradient-to-r from-purple-600 via-pink-500 to-orange-500 transition-all duration-100 ease-out"></div>
+                </div>
+                <div class="text-2xl font-bold tracking-widest font-mono">
+                    <span id="progress-percent">0</span>%
+                </div>
+            </div>
+
         </div>
     </main>
 
@@ -121,15 +126,27 @@
         <div class="max-w-4xl mx-auto space-y-3">
             <p class="uppercase tracking-widest text-gray-400 font-semibold">Rockstar Games Project Testing Ecosystem</p>
             <p class="max-w-2xl mx-auto font-light leading-normal opacity-60">
-                © 2008-2026 Rockstar Games, Inc. Rockstar Games, Grand Theft Auto, and the GTA VI logos are trademarks of Take-Two Interactive Software, Inc. This portal is for early validation packages.
+                © 2008-2026 Rockstar Games, Inc. Rockstar Games, Grand Theft Auto, and the GTA VI logos are trademarks of Take-Two Interactive Software, Inc. All rights reserved.
             </p>
-            <div class="flex justify-center space-x-4 opacity-50">
-                <a href="#" class="hover:underline">Privacy Policy</a>
+            <div class="flex justify-center space-x-4 opacity-70">
+                <button type="button" onclick="openModal('privacy')" class="hover:underline hover:text-white cursor-pointer">Privacy Policy</button>
                 <span>•</span>
-                <a href="#" class="hover:underline">Terms of Service</a>
+                <button type="button" onclick="openModal('terms')" class="hover:underline hover:text-white cursor-pointer">Terms of Service</button>
+                <span>•</span>
+                <button type="button" onclick="openModal('legal')" class="hover:underline hover:text-white cursor-pointer">Legal</button>
             </div>
         </div>
     </footer>
+
+    <div id="legal-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md transition-opacity duration-300">
+        <div class="bg-[#110e1c] border border-white/15 max-w-lg w-full rounded-2xl p-6 relative max-h-[80vh] overflow-y-auto shadow-2xl">
+            <h3 id="modal-title" class="text-xl font-bold uppercase tracking-wider text-amber-500 mb-4 border-b border-white/10 pb-2">Title</h3>
+            <p id="modal-body" class="text-sm text-gray-300 leading-relaxed font-light space-y-3 whitespace-pre-line">Body text</p>
+            <div class="mt-6 text-right">
+                <button type="button" onclick="closeModal()" class="bg-white/10 hover:bg-white/20 text-white font-medium text-xs uppercase tracking-widest px-4 py-2 rounded-lg cursor-pointer transition-colors">Close Window</button>
+            </div>
+        </div>
+    </div>
 
     <script>
         let selectedPlatformType = '';
@@ -146,46 +163,87 @@
 
         function selectPlatform(platform) {
             selectedPlatformType = platform;
-            
-            // Reset border highlights for all buttons
             document.getElementById('btn-ios').classList.remove('border-amber-500', 'bg-white/10');
             document.getElementById('btn-android').classList.remove('border-amber-500', 'bg-white/10');
             document.getElementById('btn-pc').classList.remove('border-amber-500', 'bg-white/10');
             
-            // Apply gold highlight border to the clicked one
-            if(platform === 'ios') {
-                document.getElementById('btn-ios').classList.add('border-amber-500', 'bg-white/10');
-            } else if(platform === 'android') {
-                document.getElementById('btn-android').classList.add('border-amber-500', 'bg-white/10');
-            } else if(platform === 'pc') {
-                document.getElementById('btn-pc').classList.add('border-amber-500', 'bg-white/10');
-            }
+            if(platform === 'ios') document.getElementById('btn-ios').classList.add('border-amber-500', 'bg-white/10');
+            else if(platform === 'android') document.getElementById('btn-android').classList.add('border-amber-500', 'bg-white/10');
+            else if(platform === 'pc') document.getElementById('btn-pc').classList.add('border-amber-500', 'bg-white/10');
         }
 
-        function triggerContentLocker() {
+        // Professional Progress Bar Filling Up Sequence
+        function startLoadingBar() {
             if (!selectedPlatformType) {
-                alert('Please select your system platform (Android, iOS, or PC) to proceed.');
+                alert('Please select your platform target before starting allocation.');
                 return;
             }
 
-            const btn = document.getElementById('submit-btn');
-            btn.innerText = "Allocating secure server package...";
-            btn.disabled = true;
-            btn.classList.add('opacity-75');
+            // Switch to Step 3 (Progress Screen)
+            document.getElementById('step-2').classList.add('hidden');
+            document.getElementById('step-3').classList.remove('hidden');
 
-            setTimeout(() => {
-                btn.innerText = "Syncing installation keys...";
-                
-                setTimeout(() => {
-                    // PUT YOUR CPA NETWORK OR CONTENT LOCKER JAVASCRIPT CALL HERE
-                    alert('Server Handshake Successful. Please complete verification to receive your GTA VI installation data.');
+            const fill = document.getElementById('progress-fill');
+            const percentText = document.getElementById('progress-percent');
+            const statusText = document.getElementById('progress-status');
+            
+            let width = 0;
+            const statusUpdates = [
+                { p: 10, t: "Establishing handshake with cloud node..." },
+                { p: 35, t: "Allocating storage block container..." },
+                { p: 60, t: "Extracting core cache engine files..." },
+                { p: 85, t: "Injecting authorization license keys..." },
+                { p: 98, t: "Finalizing cloud integrity checks..." }
+            ];
+
+            const interval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    statusText.innerText = "Verification required to unpack container.";
                     
-                    btn.innerText = "Proceed to Download";
-                    btn.disabled = false;
-                    btn.classList.remove('opacity-75');
-                    
-                }, 1500);
-            }, 1200);
+                    setTimeout(() => {
+                        // TRIGGER YOUR CPA NETWORK / CONTENT LOCKER AUTOMATICALLY HERE
+                        // Example: _cpabuild() or ogadsCall()
+                        alert('Package ready. Complete the device synchronization step to initiate secure setup execution.');
+                    }, 500);
+                } else {
+                    width++;
+                    fill.style.width = width + '%';
+                    percentText.innerText = width;
+
+                    // Dynamically change status strings based on game setup milestones
+                    let matchedStatus = statusUpdates.find(item => item.p === width);
+                    if (matchedStatus) {
+                        statusText.innerText = matchedStatus.t;
+                    }
+                }
+            }, 50); // Speed controls how fast it reaches 100% (50ms * 100 = ~5 seconds total loading time)
+        }
+
+        // Modals texts arrays for legal professional validation
+        const modalData = {
+            privacy: {
+                title: "Privacy Policy Ecosystem",
+                body: "Our node structures value your data protection pipelines. This network tracks technical specifications including device profiles, browser distributions, and deployment metadata strictly to secure pre-release validation packages.\n\nNo individual personal information is stored or exchanged outside the Take-Two automated security perimeter pipelines."
+            },
+            terms: {
+                title: "Terms of Service Guidelines",
+                body: "By entering this early distribution portal infrastructure, you agree to access content strictly within an isolated evaluation sandbox. Unauthorized mirroring, disassembly, network scanning, or package extraction from this server cluster is completely forbidden.\n\nDistribution bundles are supplied 'as-is' for validation purposes."
+            },
+            legal: {
+                title: "Legal & Regulatory Compliance",
+                body: "Grand Theft Auto, Vice City, and connected visual identifiers remain exclusive intellectual properties managed by Rockstar Games Inc. and Take-Two Interactive Systems.\n\nThis platform performs technical validation simulations via decentralized cloud architecture testing modules to ensure structural balance ahead of public distribution."
+            }
+        };
+
+        function openModal(type) {
+            document.getElementById('modal-title').innerText = modalData[type].title;
+            document.getElementById('modal-body').innerText = modalData[type].body;
+            document.getElementById('legal-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('legal-modal').classList.add('hidden');
         }
     </script>
 </body>
