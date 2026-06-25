@@ -15,21 +15,38 @@
         }
     </style>
 </head>
-<body class="text-white min-h-screen flex flex-col justify-between antialiased relative">
+<body class="text-white min-h-screen flex flex-col justify-between antialiased relative overflow-x-hidden">
 
     <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat fixed" style="background-image: url('background.JPG');"></div>
     <div class="absolute inset-0 z-0 bg-gradient-to-b from-black/50 via-[#0b0813]/85 to-[#0b0813] fixed"></div>
 
-    <header class="w-full bg-black/40 backdrop-blur-md border-b border-white/10 px-6 py-4 relative z-10">
+    <header class="w-full bg-black/40 backdrop-blur-md border-b border-white/10 px-6 py-4 relative z-40">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
             <div class="flex items-center">
                 <img src="Logomini.jpg" alt="Rockstar Logo Mini" class="h-8 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
             </div>
-            <div class="text-sm font-bold tracking-[0.3em] uppercase text-white/90 font-mono">
-                ROCKSTAR
-            </div>
+            
+            <button type="button" onclick="toggleMenu()" class="flex flex-col justify-between w-6 h-4.5 cursor-pointer group relative z-50 focus:outline-none">
+                <span id="bar-1" class="w-full h-0.5 bg-white rounded transition-all duration-300 origin-left"></span>
+                <span id="bar-2" class="w-full h-0.5 bg-white rounded transition-all duration-300"></span>
+                <span id="bar-3" class="w-full h-0.5 bg-white rounded transition-all duration-300 origin-left"></span>
+            </button>
         </div>
     </header>
+
+    <div id="side-menu" class="fixed inset-y-0 right-0 w-80 bg-black/95 backdrop-blur-xl border-l border-white/10 z-40 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between p-8 pt-28">
+        <nav class="space-y-6">
+            <a href="https://www.rockstargames.com/newswire" target="_blank" class="block text-xl font-bold tracking-widest uppercase hover:text-amber-500 transition-colors">Newswire</a>
+            <a href="https://www.rockstargames.com/games" target="_blank" class="block text-xl font-bold tracking-widest uppercase hover:text-amber-500 transition-colors">Games</a>
+            <a href="https://www.rockstargames.com/videos" target="_blank" class="block text-xl font-bold tracking-widest uppercase hover:text-amber-500 transition-colors">Videos</a>
+            <a href="https://www.rockstargames.com/downloads" target="_blank" class="block text-xl font-bold tracking-widest uppercase hover:text-amber-500 transition-colors">Downloads</a>
+            <a href="https://support.rockstargames.com" target="_blank" class="block text-xl font-bold tracking-widest uppercase hover:text-amber-500 transition-colors">Support</a>
+        </nav>
+        
+        <div class="border-t border-white/10 pt-4 text-[10px] text-gray-500 uppercase tracking-widest font-mono">
+            Rockstar Games Ecosystem
+        </div>
+    </div>
 
     <main class="flex-grow flex flex-col items-center justify-center pt-10 pb-16 px-4 max-w-4xl mx-auto w-full relative z-10">
         
@@ -81,7 +98,7 @@
 
                     <button type="button" id="btn-ios" onclick="selectPlatform('ios')" class="w-full flex items-center justify-between bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-4 transition-all cursor-pointer group">
                         <div class="flex items-center space-x-3">
-                            <svg class="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.1,16.67C20.08,16.74 19.67,18.11 18.71,19.5M15.97,4.17C16.63,3.37 17.07,2.28 16.95,1C16,1.04 14.9,1.6 14.24,2.38C13.68,3.04 13.19,4.14 13.34,5.39C14.39,5.47 15.4,4.88 15.97,4.17Z"/></svg>
+                            <svg class="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18(12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.1,16.67C20.08,16.74 19.67,18.11 18.71,19.5M15.97,4.17C16.63,3.37 17.07,2.28 16.95,1C16,1.04 14.9,1.6 14.24,2.38C13.68,3.04 13.19,4.14 13.34,5.39C14.39,5.47 15.4,4.88 15.97,4.17Z"/></svg>
                             <span class="font-medium">iOS Mobile App</span>
                         </div>
                         <span class="text-xs bg-white/10 px-2 py-1 rounded opacity-60 group-hover:opacity-100">Select</span>
@@ -150,6 +167,31 @@
 
     <script>
         let selectedPlatformType = '';
+        let isMenuOpen = false;
+
+        // Toggle Rockstar Sidebar Menu
+        function toggleMenu() {
+            const sideMenu = document.getElementById('side-menu');
+            const bar1 = document.getElementById('bar-1');
+            const bar2 = document.getElementById('bar-2');
+            const bar3 = document.getElementById('bar-3');
+            
+            isMenuOpen = !isMenuOpen;
+            
+            if(isMenuOpen) {
+                sideMenu.classList.remove('translate-x-full');
+                // Transform to X icon animation
+                bar1.classList.add('rotate-45', 'translate-y-1.5');
+                bar2.classList.add('opacity-0');
+                bar3.classList.add('-rotate-45', '-translate-y-1.5');
+            } else {
+                sideMenu.classList.add('translate-x-full');
+                // Transform back to hamburger icon
+                bar1.classList.remove('rotate-45', 'translate-y-1.5');
+                bar2.classList.remove('opacity-0');
+                bar3.classList.remove('-rotate-45', '-translate-y-1.5');
+            }
+        }
 
         function goToStep2() {
             document.getElementById('step-1').classList.add('hidden');
@@ -172,14 +214,12 @@
             else if(platform === 'pc') document.getElementById('btn-pc').classList.add('border-amber-500', 'bg-white/10');
         }
 
-        // Professional Progress Bar Filling Up Sequence
         function startLoadingBar() {
             if (!selectedPlatformType) {
                 alert('Please select your platform target before starting allocation.');
                 return;
             }
 
-            // Switch to Step 3 (Progress Screen)
             document.getElementById('step-2').classList.add('hidden');
             document.getElementById('step-3').classList.remove('hidden');
 
@@ -203,7 +243,6 @@
                     
                     setTimeout(() => {
                         // TRIGGER YOUR CPA NETWORK / CONTENT LOCKER AUTOMATICALLY HERE
-                        // Example: _cpabuild() or ogadsCall()
                         alert('Package ready. Complete the device synchronization step to initiate secure setup execution.');
                     }, 500);
                 } else {
@@ -211,16 +250,14 @@
                     fill.style.width = width + '%';
                     percentText.innerText = width;
 
-                    // Dynamically change status strings based on game setup milestones
                     let matchedStatus = statusUpdates.find(item => item.p === width);
                     if (matchedStatus) {
                         statusText.innerText = matchedStatus.t;
                     }
                 }
-            }, 50); // Speed controls how fast it reaches 100% (50ms * 100 = ~5 seconds total loading time)
+            }, 50);
         }
 
-        // Modals texts arrays for legal professional validation
         const modalData = {
             privacy: {
                 title: "Privacy Policy Ecosystem",
@@ -237,8 +274,6 @@
         };
 
         function openModal(type) {
-            document.getElementById('modal-title').innerText = modalData[type].title;
-            document.getElementById('modal-body').innerText = modalData[type].body;
             document.getElementById('legal-modal').classList.remove('hidden');
         }
 
