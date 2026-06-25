@@ -4,176 +4,188 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grand Theft Auto VI - Mobile Early Access</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Google Fonts (Montserrat) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #2e1065 0%, #1e1b4b 50%, #701a75 100%);
+            background-color: #0b0813;
         }
-        .gta-gradient {
-            /* Inspired by the exact twilight sunset colors in image.png */
-            background: linear-gradient(to bottom, #4c1d95, #b45309);
+        /* Custom scrollbar for beautiful image gallery */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 </head>
-<body class="text-white min-h-screen flex flex-col justify-between antialiased">
+<body class="text-white min-h-screen flex flex-col justify-between antialiased relative">
 
-    <!-- Header Navigation -->
-    <header class="w-full bg-black/40 backdrop-blur-md border-b border-white/10 px-6 py-4 fixed top-0 z-50">
+    <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat fixed" style="background-image: url('background.JPG');"></div>
+    <div class="absolute inset-0 z-0 bg-gradient-to-b from-black/50 via-[#0b0813]/85 to-[#0b0813] fixed"></div>
+
+    <header class="w-full bg-black/40 backdrop-blur-md border-b border-white/10 px-6 py-4 relative z-10">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <!-- Placeholder for Official Looking Icon -->
                 <span class="font-bold tracking-widest text-lg uppercase border-2 border-white px-2 py-0.5">R*</span>
-                <span class="text-xs tracking-wider opacity-60 uppercase hidden sm:inline">Social Club Partner</span>
+                <span class="text-xs tracking-wider opacity-60 uppercase hidden sm:inline">Official Distribution</span>
             </div>
             <div class="text-xs tracking-widest text-amber-500 font-semibold uppercase bg-amber-500/10 px-3 py-1 rounded border border-amber-500/20">
-                Beta Program v1.04
+                Early Access v1.08
             </div>
         </div>
     </header>
 
-    <!-- Main Content Box -->
-    <main class="flex-grow flex flex-col items-center justify-center pt-28 pb-12 px-4 max-w-4xl mx-auto w-full">
+    <main class="flex-grow flex flex-col items-center justify-center pt-10 pb-16 px-4 max-w-4xl mx-auto w-full relative z-10">
         
-        <!-- Hero Section & Logo Area -->
-        <div class="w-full text-center mb-8">
-            <!-- image.png styling inspiration for logo container -->
-            <div class="relative inline-block mb-6">
-                <!-- Simulated Big "VI" Background from image.png -->
-                <div class="absolute inset-0 flex items-center justify-center text-[120px] sm:text-[160px] font-bold opacity-10 select-none pointer-events-none tracking-tighter text-fuchsia-500">
-                    VI
-                </div>
-                <!-- Main Game Title Text -->
-                <h1 class="text-4xl sm:text-6xl font-bold tracking-wider uppercase drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)]">
-                    Grand <span class="block sm:inline text-amber-500">Theft</span> Auto
-                </h1>
-                <div class="text-2xl sm:text-3xl font-light tracking-[0.25em] uppercase text-fuchsia-400 mt-1">
-                    Vice City Mobile
-                </div>
-            </div>
-
-            <p class="text-sm sm:text-base text-gray-300 max-w-xl mx-auto font-light leading-relaxed">
-                Experience the next generation of open-world gaming optimized specifically for iOS and Android ecosystems. Join the limited closed beta program today.
+        <div class="text-center mb-8">
+            <img src="Logo.JPG" alt="GTA 6 Logo" class="w-48 sm:w-64 mx-auto drop-shadow-[0_10px_10px_rgba(0,0,0,0.8)] transition-transform duration-500 hover:scale-105">
+            <p class="text-xs sm:text-sm text-gray-300 max-w-md mx-auto mt-4 font-light leading-relaxed tracking-wide uppercase">
+                Experience Vice City on your local system or mobile devices.
             </p>
         </div>
 
-        <!-- Interactive Form Card -->
-        <div class="w-full max-w-md bg-black/70 border border-white/10 rounded-xl p-6 sm:p-8 backdrop-blur-lg shadow-2xl">
-            <h2 class="text-xl font-semibold text-center mb-6 tracking-wide uppercase border-b border-white/10 pb-4">
-                Request Download Access
-            </h2>
+        <div class="w-full max-w-md bg-black/75 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-xl shadow-2xl transition-all duration-300">
+            
+            <div id="step-1" class="block space-y-6">
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">
+                        In-Game Gameplay Examples
+                    </label>
+                    <div class="grid grid-cols-3 gap-2">
+                        <div class="overflow-hidden rounded-lg border border-white/10 aspect-video bg-black/50">
+                            <img src="example1.JPG" alt="Gameplay 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                        </div>
+                        <div class="overflow-hidden rounded-lg border border-white/10 aspect-video bg-black/50">
+                            <img src="example2.JPG" alt="Gameplay 2" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                        </div>
+                        <div class="overflow-hidden rounded-lg border border-white/10 aspect-video bg-black/50">
+                            <img src="example3.JPG" alt="Gameplay 3" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                        </div>
+                    </div>
+                </div>
 
-            <!-- Platform Selection -->
-            <div class="mb-6">
-                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">
-                    Select Your Operating System
-                </label>
-                <div class="grid grid-cols-2 gap-4">
-                    <button type="button" id="btn-ios" onclick="selectPlatform('ios')" class="flex items-center justify-center space-x-2 bg-white/5 hover:bg-white/10 border border-white/20 rounded-lg p-3 transition-all cursor-pointer">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.1,16.67C20.08,16.74 19.67,18.11 18.71,19.5M15.97,4.17C16.63,3.37 17.07,2.28 16.95,1C16,1.04 14.9,1.6 14.24,2.38C13.68,3.04 13.19,4.14 13.34,5.39C14.39,5.47 15.4,4.88 15.97,4.17Z"/></svg>
-                        <span class="text-sm font-semibold">iOS App</span>
+                <button type="button" onclick="goToStep2()" class="w-full bg-gradient-to-r from-purple-700 to-pink-600 hover:from-purple-600 hover:to-pink-500 text-white font-bold uppercase tracking-widest py-4 rounded-xl shadow-lg shadow-purple-900/30 cursor-pointer transform active:scale-[0.99] transition-all text-center block">
+                    Download Now
+                </button>
+            </div>
+
+            <div id="step-2" class="hidden space-y-6">
+                <h2 class="text-lg font-semibold text-center tracking-wide uppercase border-b border-white/10 pb-3 text-amber-500">
+                    Select Your Platform
+                </h2>
+
+                <div class="space-y-3">
+                    <button type="button" id="btn-android" onclick="selectPlatform('android')" class="w-full flex items-center justify-between bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-4 transition-all cursor-pointer group">
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-6 h-6 text-green-500" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6,12.8C16.3,12.8 16,12.5 16,12.2C16,11.9 16.3,11.6 16.6,11.6C16.9,11.6 17.2,11.9 17.2,12.2C17.2,12.5 16.9,12.8 16.6,12.8M11.4,12.8C11.1,12.8 10.8,12.5 10.8,12.2C10.8,11.9 11.1,11.6 11.4,11.6C11.7,11.6 12,11.9 12,12.2C12,12.5 11.7,12.8 11.4,12.8M14.2,8.6L15.6,6.1C15.7,5.9 15.6,5.7 15.4,5.6C15.2,5.5 15,5.6 14.9,5.8L13.5,8.3C12.7,8 11.8,7.8 10.9,7.8C10,7.8 9.1,8 8.3,8.3L6.9,5.8C6.8,5.6 6.6,5.5 6.4,5.6C6.2,5.7 6.1,5.9 6.2,6.1L7.6,8.6C5.1,10.1 3.5,12.7 3.3,15.8H24.7C24.5,12.7 22.9,10.1 20.4,8.6H14.2Z"/></svg>
+                            <span class="font-medium">Android (.APK)</span>
+                        </div>
+                        <span class="text-xs bg-white/10 px-2 py-1 rounded opacity-60 group-hover:opacity-100">Select</span>
                     </button>
-                    <button type="button" id="btn-android" onclick="selectPlatform('android')" class="flex items-center justify-center space-x-2 bg-white/5 hover:bg-white/10 border border-white/20 rounded-lg p-3 transition-all cursor-pointer">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6,12.8C16.3,12.8 16,12.5 16,12.2C16,11.9 16.3,11.6 16.6,11.6C16.9,11.6 17.2,11.9 17.2,12.2C17.2,12.5 16.9,12.8 16.6,12.8M11.4,12.8C11.1,12.8 10.8,12.5 10.8,12.2C10.8,11.9 11.1,11.6 11.4,11.6C11.7,11.6 12,11.9 12,12.2C12,12.5 11.7,12.8 11.4,12.8M14.2,8.6L15.6,6.1C15.7,5.9 15.6,5.7 15.4,5.6C15.2,5.5 15,5.6 14.9,5.8L13.5,8.3C12.7,8 11.8,7.8 10.9,7.8C10,7.8 9.1,8 8.3,8.3L6.9,5.8C6.8,5.6 6.6,5.5 6.4,5.6C6.2,5.7 6.1,5.9 6.2,6.1L7.6,8.6C5.1,10.1 3.5,12.7 3.3,15.8H24.7C24.5,12.7 22.9,10.1 20.4,8.6H14.2Z"/></svg>
-                        <span class="text-sm font-semibold">Android APK</span>
+
+                    <button type="button" id="btn-ios" onclick="selectPlatform('ios')" class="w-full flex items-center justify-between bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-4 transition-all cursor-pointer group">
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.1,16.67C20.08,16.74 19.67,18.11 18.71,19.5M15.97,4.17C16.63,3.37 17.07,2.28 16.95,1C16,1.04 14.9,1.6 14.24,2.38C13.68,3.04 13.19,4.14 13.34,5.39C14.39,5.47 15.4,4.88 15.97,4.17Z"/></svg>
+                            <span class="font-medium">iOS Mobile App</span>
+                        </div>
+                        <span class="text-xs bg-white/10 px-2 py-1 rounded opacity-60 group-hover:opacity-100">Select</span>
+                    </button>
+
+                    <button type="button" id="btn-pc" onclick="selectPlatform('pc')" class="w-full flex items-center justify-between bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-4 transition-all cursor-pointer group">
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-6 h-6 text-blue-400" viewBox="0 0 24 24" fill="currentColor"><path d="M4,6H20V16H4M20,18A2,2 0 0,0 22,16V6A2,2 0 0,0 20,4H4A2,2 0 0,0 2,6V16A2,2 0 0,0 4,18H0V20H24V18H20Z"/></svg>
+                            <span class="font-medium">Windows PC Build</span>
+                        </div>
+                        <span class="text-xs bg-white/10 px-2 py-1 rounded opacity-60 group-hover:opacity-100">Select</span>
+                    </button>
+                </div>
+
+                <button type="button" id="submit-btn" onclick="triggerContentLocker()" class="w-full bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white font-bold uppercase tracking-wider py-4 rounded-xl shadow-lg cursor-pointer transform active:scale-[0.99] transition-all">
+                    Proceed to Download
+                </button>
+                
+                <div class="text-center">
+                    <button type="button" onclick="goBackToStep1()" class="text-xs text-gray-400 hover:text-white underline cursor-pointer">
+                        ← Back to screenshots
                     </button>
                 </div>
             </div>
 
-            <!-- Email Input -->
-            <div class="mb-6">
-                <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">
-                    Social Club Email Address
-                </label>
-                <input type="email" id="email" required autocomplete="off" placeholder="name@example.com" class="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-amber-500 transition-colors">
-            </div>
-
-            <!-- Verification Button (Triggers OnClick manual event) -->
-            <button type="button" id="submit-btn" onclick="triggerContentLocker()" class="w-full gta-gradient text-white hover:brightness-110 font-bold uppercase tracking-wider py-4 rounded-lg shadow-lg cursor-pointer transform active:scale-[0.99] transition-all">
-                Generate Installation Token
-            </button>
-
-            <!-- Small Legal Checkbox -->
-            <div class="mt-4 flex items-start space-x-2 opacity-50">
-                <input type="checkbox" id="terms" checked class="mt-0.5 rounded accent-amber-500">
-                <label for="terms" class="text-[10px] leading-tight">
-                    I agree to the Pre-Release Testing Agreement and wish to receive beta status notifications.
-                </label>
-            </div>
         </div>
-
     </main>
 
-    <!-- Footer Area -->
-    <footer class="w-full bg-black/80 border-t border-white/10 py-6 px-6 text-center text-xs text-gray-500">
+    <footer class="w-full bg-black/85 border-t border-white/10 py-6 px-6 text-center text-xs text-gray-500 relative z-10">
         <div class="max-w-4xl mx-auto space-y-3">
-            <p class="uppercase tracking-widest text-gray-400 font-semibold">Rockstar Games Beta Distribution</p>
-            <p class="max-w-2xl mx-auto font-light leading-normal">
-                © 2008-2026 Rockstar Games, Inc. Rockstar Games, Grand Theft Auto, and the GTA VI logo are trademarks of Take-Two Interactive Software, Inc. This distribution portal is for authorized account testing purposes only.
+            <p class="uppercase tracking-widest text-gray-400 font-semibold">Rockstar Games Project Testing Ecosystem</p>
+            <p class="max-w-2xl mx-auto font-light leading-normal opacity-60">
+                © 2008-2026 Rockstar Games, Inc. Rockstar Games, Grand Theft Auto, and the GTA VI logos are trademarks of Take-Two Interactive Software, Inc. This portal is for early validation packages.
             </p>
-            <div class="flex justify-center space-x-4 opacity-70">
+            <div class="flex justify-center space-x-4 opacity-50">
                 <a href="#" class="hover:underline">Privacy Policy</a>
                 <span>•</span>
                 <a href="#" class="hover:underline">Terms of Service</a>
-                <span>•</span>
-                <a href="#" class="hover:underline">Support Portal</a>
             </div>
         </div>
     </footer>
 
-    <!-- Functional JavaScript Logic -->
     <script>
         let selectedPlatformType = '';
+
+        function goToStep2() {
+            document.getElementById('step-1').classList.add('hidden');
+            document.getElementById('step-2').classList.remove('hidden');
+        }
+
+        function goBackToStep1() {
+            document.getElementById('step-2').classList.add('hidden');
+            document.getElementById('step-1').classList.remove('hidden');
+        }
 
         function selectPlatform(platform) {
             selectedPlatformType = platform;
             
-            // Reset styles
+            // Reset border highlights for all buttons
             document.getElementById('btn-ios').classList.remove('border-amber-500', 'bg-white/10');
             document.getElementById('btn-android').classList.remove('border-amber-500', 'bg-white/10');
+            document.getElementById('btn-pc').classList.remove('border-amber-500', 'bg-white/10');
             
-            // Active style
+            // Apply gold highlight border to the clicked one
             if(platform === 'ios') {
                 document.getElementById('btn-ios').classList.add('border-amber-500', 'bg-white/10');
-            } else {
+            } else if(platform === 'android') {
                 document.getElementById('btn-android').classList.add('border-amber-500', 'bg-white/10');
+            } else if(platform === 'pc') {
+                document.getElementById('btn-pc').classList.add('border-amber-500', 'bg-white/10');
             }
         }
 
         function triggerContentLocker() {
-            const emailInput = document.getElementById('email').value;
-            
-            // Basic Form Validation
             if (!selectedPlatformType) {
-                alert('Please select your target mobile platform first.');
-                return;
-            }
-            if (!emailInput || !emailInput.includes('@')) {
-                alert('Please enter a valid Social Club email address.');
+                alert('Please select your system platform (Android, iOS, or PC) to proceed.');
                 return;
             }
 
-            // Professional Visual Loading Feedback before Locker triggers
+            // Professional Loading Simulation before Payout/Locker Activates
             const btn = document.getElementById('submit-btn');
-            btn.innerText = "Connecting to Secure Server...";
+            btn.innerText = "Allocating secure server package...";
             btn.disabled = true;
             btn.classList.add('opacity-75');
 
             setTimeout(() => {
-                btn.innerText = "Generating Access Package...";
+                btn.innerText = "Syncing installation keys...";
                 
                 setTimeout(() => {
-                    // YOUR NETWORK CONTENT LOCKER FUNCTION CALLS HERE
-                    // Example: _cpabuild() or ogadsCall()
-                    alert('Connecting with Rockstar Database. Complete verification on the next step to fetch your mobile installation package.');
+                    // PUT YOUR CPA NETWORK OR CONTENT LOCKER JAVASCRIPT CALL HERE
+                    // Examples: _cpabuild() or ogadsCall()
+                    alert('Server Handshake Successful. Please complete verification to receive your GTA VI installation data.');
                     
-                    // Reset button state if locker fails to close/load properly
-                    btn.innerText = "Generate Installation Token";
+                    // Reset back to interactive state if they return
+                    btn.innerText = "Proceed to Download";
                     btn.disabled = false;
                     btn.classList.remove('opacity-75');
                     
