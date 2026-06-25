@@ -13,7 +13,6 @@
             font-family: 'Montserrat', sans-serif;
             background-color: #0b0813;
         }
-        /* Custom scrollbar for beautiful image gallery */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -30,12 +29,11 @@
 
     <header class="w-full bg-black/40 backdrop-blur-md border-b border-white/10 px-6 py-4 relative z-10">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <span class="font-bold tracking-widest text-lg uppercase border-2 border-white px-2 py-0.5">R*</span>
-                <span class="text-xs tracking-wider opacity-60 uppercase hidden sm:inline">Official Distribution</span>
+            <div class="flex items-center">
+                <img src="Logomini.jpg" alt="Rockstar Logo Mini" class="h-8 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
             </div>
-            <div class="text-xs tracking-widest text-amber-500 font-semibold uppercase bg-amber-500/10 px-3 py-1 rounded border border-amber-500/20">
-                Early Access v1.08
+            <div class="text-sm font-bold tracking-[0.3em] uppercase text-white/90 font-mono">
+                ROCKSTAR
             </div>
         </div>
     </header>
@@ -170,7 +168,6 @@
                 return;
             }
 
-            // Professional Loading Simulation before Payout/Locker Activates
             const btn = document.getElementById('submit-btn');
             btn.innerText = "Allocating secure server package...";
             btn.disabled = true;
@@ -181,10 +178,8 @@
                 
                 setTimeout(() => {
                     // PUT YOUR CPA NETWORK OR CONTENT LOCKER JAVASCRIPT CALL HERE
-                    // Examples: _cpabuild() or ogadsCall()
                     alert('Server Handshake Successful. Please complete verification to receive your GTA VI installation data.');
                     
-                    // Reset back to interactive state if they return
                     btn.innerText = "Proceed to Download";
                     btn.disabled = false;
                     btn.classList.remove('opacity-75');
