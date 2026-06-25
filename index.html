@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grand Theft Auto VI - Early Access Distribution</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts (Montserrat) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -17,15 +19,21 @@
 </head>
 <body class="text-white min-h-screen flex flex-col justify-between antialiased relative overflow-x-hidden">
 
-    <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat fixed" style="background-image: url('background.JPG');"></div>
-    <div class="absolute inset-0 z-0 bg-gradient-to-b from-black/50 via-[#0b0813]/85 to-[#0b0813] fixed"></div>
+    <!-- Background Image - Fully Visible and Crisp -->
+    <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat fixed select-none pointer-events-none" style="background-image: url('background.JPG');"></div>
+    
+    <!-- Minimal gradient overlay just to blend the footer and top bar naturally, keeping the main background clear -->
+    <div class="absolute inset-0 z-0 bg-gradient-to-b from-black/30 via-transparent to-black/60 fixed select-none pointer-events-none"></div>
 
-    <header class="w-full bg-black/40 backdrop-blur-md border-b border-white/10 px-6 py-4 relative z-40">
+    <!-- Header Navigation -->
+    <header class="w-full bg-black/60 backdrop-blur-md border-b border-white/10 px-6 py-4 relative z-40">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <!-- Left Side: Mini Logo Image -->
             <div class="flex items-center">
                 <img src="Logomini.jpg" alt="Rockstar Logo Mini" class="h-8 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
             </div>
             
+            <!-- Right Side: Hamburger Menu (3 d chrati) -->
             <button type="button" onclick="toggleMenu()" class="flex flex-col justify-between w-6 h-4.5 cursor-pointer group relative z-50 focus:outline-none">
                 <span id="bar-1" class="w-full h-0.5 bg-white rounded transition-all duration-300 origin-left"></span>
                 <span id="bar-2" class="w-full h-0.5 bg-white rounded transition-all duration-300"></span>
@@ -34,6 +42,7 @@
         </div>
     </header>
 
+    <!-- SIDEBAR NAVIGATION MENU -->
     <div id="side-menu" class="fixed inset-y-0 right-0 w-80 bg-black/95 backdrop-blur-xl border-l border-white/10 z-40 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between p-8 pt-28">
         <nav class="space-y-6">
             <a href="https://www.rockstargames.com/newswire" target="_blank" class="block text-xl font-bold tracking-widest uppercase hover:text-amber-500 transition-colors">Newswire</a>
@@ -42,46 +51,51 @@
             <a href="https://www.rockstargames.com/downloads" target="_blank" class="block text-xl font-bold tracking-widest uppercase hover:text-amber-500 transition-colors">Downloads</a>
             <a href="https://support.rockstargames.com" target="_blank" class="block text-xl font-bold tracking-widest uppercase hover:text-amber-500 transition-colors">Support</a>
         </nav>
-        
         <div class="border-t border-white/10 pt-4 text-[10px] text-gray-500 uppercase tracking-widest font-mono">
             Rockstar Games Ecosystem
         </div>
     </div>
 
-    <main class="flex-grow flex flex-col items-center justify-center pt-10 pb-16 px-4 max-w-4xl mx-auto w-full relative z-10">
+    <!-- Main Content Container -->
+    <main class="flex-grow flex flex-col items-center justify-center pt-8 pb-16 px-4 max-w-4xl mx-auto w-full relative z-10">
         
-        <div class="text-center mb-8">
-            <img src="Logo.JPG" alt="GTA 6 Logo" class="w-48 sm:w-64 mx-auto drop-shadow-[0_10px_10px_rgba(0,0,0,0.8)] transition-transform duration-500 hover:scale-105">
-            <p class="text-xs sm:text-sm text-gray-300 max-w-md mx-auto mt-4 font-light leading-relaxed tracking-wide uppercase">
+        <!-- Game Logo Image -->
+        <div class="text-center mb-6">
+            <img src="Logo.JPG" alt="GTA 6 Logo" class="w-44 sm:w-56 mx-auto drop-shadow-[0_8px_16px_rgba(0,0,0,0.9)] transition-transform duration-500 hover:scale-105">
+            <p class="text-xs text-white bg-black/50 backdrop-blur-sm inline-block px-3 py-1 rounded-full mt-4 font-medium tracking-wide uppercase border border-white/10 shadow-lg">
                 Experience Vice City on your local system or mobile devices.
             </p>
         </div>
 
-        <div class="w-full max-w-md bg-black/75 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-xl shadow-2xl transition-all duration-300">
+        <!-- High-Contrast Content Card -->
+        <div class="w-full max-w-md bg-black/85 border border-white/15 rounded-2xl p-6 sm:p-8 backdrop-blur-md shadow-[0_20px_50px_rgba(0,0,0,0.9)] transition-all duration-300">
             
+            <!-- STEP 1: Main Info & Gallery -->
             <div id="step-1" class="block space-y-6">
                 <div>
                     <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">
                         In-Game Gameplay Examples
                     </label>
                     <div class="grid grid-cols-3 gap-2">
-                        <div class="overflow-hidden rounded-lg border border-white/10 aspect-video bg-black/50">
+                        <div class="overflow-hidden rounded-lg border border-white/10 aspect-video bg-black/50 shadow-md">
                             <img src="example1.JPG" alt="Gameplay 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
                         </div>
-                        <div class="overflow-hidden rounded-lg border border-white/10 aspect-video bg-black/50">
+                        <div class="overflow-hidden rounded-lg border border-white/10 aspect-video bg-black/50 shadow-md">
                             <img src="example2.JPG" alt="Gameplay 2" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
                         </div>
-                        <div class="overflow-hidden rounded-lg border border-white/10 aspect-video bg-black/50">
+                        <div class="overflow-hidden rounded-lg border border-white/10 aspect-video bg-black/50 shadow-md">
                             <img src="example3.JPG" alt="Gameplay 3" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
                         </div>
                     </div>
                 </div>
 
-                <button type="button" onclick="goToStep2()" class="w-full bg-gradient-to-r from-purple-700 to-pink-600 hover:from-purple-600 hover:to-pink-500 text-white font-bold uppercase tracking-widest py-4 rounded-xl shadow-lg shadow-purple-900/30 cursor-pointer transform active:scale-[0.99] transition-all text-center block">
+                <!-- First Trigger Button -->
+                <button type="button" onclick="goToStep2()" class="w-full bg-gradient-to-r from-purple-700 to-pink-600 hover:from-purple-600 hover:to-pink-500 text-white font-bold uppercase tracking-widest py-4 rounded-xl shadow-xl shadow-purple-900/40 cursor-pointer transform active:scale-[0.99] transition-all text-center block">
                     Download Now
                 </button>
             </div>
 
+            <!-- STEP 2: Platform Selection -->
             <div id="step-2" class="hidden space-y-6">
                 <h2 class="text-lg font-semibold text-center tracking-wide uppercase border-b border-white/10 pb-3 text-amber-500">
                     Select Your Platform
@@ -113,6 +127,7 @@
                     </button>
                 </div>
 
+                <!-- Content Locker Action Button -->
                 <button type="button" id="submit-btn" onclick="startLoadingBar()" class="w-full bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white font-bold uppercase tracking-wider py-4 rounded-xl shadow-lg cursor-pointer transform active:scale-[0.99] transition-all">
                     Proceed to Download
                 </button>
@@ -124,6 +139,7 @@
                 </div>
             </div>
 
+            <!-- STEP 3: Progress Loading Bar -->
             <div id="step-3" class="hidden space-y-5 text-center py-4">
                 <h3 id="progress-status" class="text-sm font-semibold tracking-wide uppercase text-amber-500 animate-pulse">
                     Connecting to server...
@@ -139,7 +155,8 @@
         </div>
     </main>
 
-    <footer class="w-full bg-black/85 border-t border-white/10 py-6 px-6 text-center text-xs text-gray-500 relative z-10">
+    <!-- Footer Area -->
+    <footer class="w-full bg-black/90 border-t border-white/10 py-6 px-6 text-center text-xs text-gray-500 relative z-10">
         <div class="max-w-4xl mx-auto space-y-3">
             <p class="uppercase tracking-widest text-gray-400 font-semibold">Rockstar Games Project Testing Ecosystem</p>
             <p class="max-w-2xl mx-auto font-light leading-normal opacity-60">
@@ -155,6 +172,7 @@
         </div>
     </footer>
 
+    <!-- POPUP MODALS WINDOW FOR LEGAL CONTENT -->
     <div id="legal-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md transition-opacity duration-300">
         <div class="bg-[#110e1c] border border-white/15 max-w-lg w-full rounded-2xl p-6 relative max-h-[80vh] overflow-y-auto shadow-2xl">
             <h3 id="modal-title" class="text-xl font-bold uppercase tracking-wider text-amber-500 mb-4 border-b border-white/10 pb-2">Title</h3>
@@ -165,11 +183,11 @@
         </div>
     </div>
 
+    <!-- JavaScript Logic -->
     <script>
         let selectedPlatformType = '';
         let isMenuOpen = false;
 
-        // Toggle Rockstar Sidebar Menu
         function toggleMenu() {
             const sideMenu = document.getElementById('side-menu');
             const bar1 = document.getElementById('bar-1');
@@ -180,13 +198,11 @@
             
             if(isMenuOpen) {
                 sideMenu.classList.remove('translate-x-full');
-                // Transform to X icon animation
                 bar1.classList.add('rotate-45', 'translate-y-1.5');
                 bar2.classList.add('opacity-0');
                 bar3.classList.add('-rotate-45', '-translate-y-1.5');
             } else {
                 sideMenu.classList.add('translate-x-full');
-                // Transform back to hamburger icon
                 bar1.classList.remove('rotate-45', 'translate-y-1.5');
                 bar2.classList.remove('opacity-0');
                 bar3.classList.remove('-rotate-45', '-translate-y-1.5');
@@ -274,6 +290,8 @@
         };
 
         function openModal(type) {
+            document.getElementById('modal-title').innerText = modalData[type].title;
+            document.getElementById('modal-body').innerText = modalData[type].body;
             document.getElementById('legal-modal').classList.remove('hidden');
         }
 
