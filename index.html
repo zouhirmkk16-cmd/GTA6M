@@ -21,19 +21,17 @@
 </head>
 <body class="text-white min-h-screen flex flex-col justify-between antialiased relative">
 
-    <!-- Background Image - Full Stretch Cover -->
+    <!-- Background Image - Full Visibility with Subtle Vignette -->
     <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat fixed select-none pointer-events-none" style="background-image: url('background.JPG');"></div>
-    <div class="absolute inset-0 z-0 bg-gradient-to-b from-black/40 via-[#0b0813]/90 to-[#0b0813] fixed select-none pointer-events-none"></div>
+    <div class="absolute inset-0 z-0 bg-gradient-to-b from-black/60 via-transparent to-[#0b0813]/95 fixed select-none pointer-events-none"></div>
 
-    <!-- Header Navigation Bar (Professional Game Layout) -->
+    <!-- Header Navigation Bar -->
     <header class="w-full bg-black/80 backdrop-blur-md border-b border-white/10 px-6 py-4 fixed top-0 left-0 z-50">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <!-- Left Side: Mini Logo Image -->
             <div class="flex items-center space-x-6">
                 <img src="Logomini.jpg" alt="Rockstar Games Mini" class="h-8 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
             </div>
             
-            <!-- Center/Right Side: Premium Inline Game Navigation -->
             <nav class="hidden md:flex items-center space-x-8 text-xs font-bold tracking-widest uppercase text-gray-300">
                 <a href="https://www.rockstargames.com/newswire" target="_blank" class="hover:text-amber-500 transition-colors duration-200">Newswire</a>
                 <a href="https://www.rockstargames.com/games" target="_blank" class="hover:text-amber-500 transition-colors duration-200">Games</a>
@@ -42,7 +40,6 @@
                 <a href="https://support.rockstargames.com" target="_blank" class="hover:text-amber-500 transition-colors duration-200 text-amber-500 border border-amber-500/30 px-3 py-1 rounded bg-amber-500/10">Support</a>
             </nav>
 
-            <!-- Mobile Action Button -->
             <div class="md:hidden">
                 <button type="button" onclick="toggleMobileMenu()" class="text-[10px] font-bold tracking-widest uppercase bg-amber-600 hover:bg-amber-500 text-white px-4 py-2 rounded shadow-md transition-all cursor-pointer">
                     Menu
@@ -54,14 +51,12 @@
     <!-- FULL MOBILE MENU SCREEN -->
     <div id="mobile-menu-overlay" class="hidden fixed inset-0 z-50 bg-[#0b0813]/98 backdrop-blur-xl flex flex-col justify-between p-6 transition-all duration-300">
         <div class="w-full">
-            <!-- Close Row -->
             <div class="flex justify-between items-center border-b border-white/10 pb-4 mb-8">
                 <img src="Logomini.jpg" alt="Rockstar Games Mini" class="h-7 w-auto object-contain">
                 <button type="button" onclick="toggleMobileMenu()" class="text-xs font-bold tracking-widest uppercase bg-white/10 text-white px-3 py-1.5 rounded border border-white/10 cursor-pointer">
                     Close ✕
                 </button>
             </div>
-            <!-- Navigation Links Portfolio -->
             <nav class="flex flex-col space-y-6 text-sm font-bold tracking-widest uppercase pl-2">
                 <a href="https://www.rockstargames.com/newswire" target="_blank" onclick="toggleMobileMenu()" class="text-gray-200 hover:text-amber-500 transition-colors py-2 border-b border-white/5">Newswire</a>
                 <a href="https://www.rockstargames.com/games" target="_blank" onclick="toggleMobileMenu()" class="text-gray-200 hover:text-amber-500 transition-colors py-2 border-b border-white/5">Games</a>
@@ -84,13 +79,13 @@
             <h1 class="text-2xl sm:text-3xl font-bold uppercase tracking-wider text-amber-500 max-w-xl mx-auto drop-shadow-md">
                 GTA 6 (Beta & Official Version)
             </h1>
-            <p class="text-sm sm:text-base text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
-                Welcome to the official infrastructure node for pre-release validation. This portal facilitates distributed server architecture evaluation, cloud synchronization metrics, and local deployment testing across standardized target systems.
+            <p class="text-sm sm:text-base text-gray-200 max-w-2xl mx-auto font-medium leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                Welcome to the official infrastructure portal for pre-release device verification. This node targets system authentication and cloud synchronization deployment modules.
             </p>
         </section>
 
         <!-- DOWNLOAD CONTROL INTERACTIVE CARD -->
-        <section id="download-zone" class="w-full max-w-md bg-black/85 border border-white/15 rounded-2xl p-6 sm:p-8 backdrop-blur-md shadow-[0_25px_60px_rgba(0,0,0,0.95)]">
+        <section id="download-zone" class="w-full max-w-md bg-black/90 border border-white/20 rounded-2xl p-6 sm:p-8 backdrop-blur-sm shadow-[0_25px_60px_rgba(0,0,0,0.95)] animate-fade-in">
             
             <!-- STEP 1: Main Info & Gallery -->
             <div id="step-1" class="block space-y-6">
@@ -154,7 +149,7 @@
                 
                 <div class="text-center">
                     <button type="button" onclick="goBackToStep1()" class="text-xs text-gray-400 hover:text-white underline cursor-pointer">
-                        ← Back to view validation samples
+                        ← Back to view verification samples
                     </button>
                 </div>
             </div>
@@ -165,12 +160,10 @@
                     Connecting to server...
                 </h3>
                 
-                <!-- Loading Animation Container -->
                 <div id="loading-bar-container" class="w-full bg-white/10 rounded-full h-4 p-0.5 border border-white/5 overflow-hidden">
                     <div id="progress-fill" class="h-full w-0 rounded-full bg-gradient-to-r from-purple-600 via-pink-500 to-orange-500 transition-all duration-100 ease-out"></div>
                 </div>
                 
-                <!-- Percent Output -->
                 <div id="percent-display" class="text-2xl font-bold tracking-widest font-mono">
                     <span id="progress-percent">0</span>%
                 </div>
@@ -189,19 +182,19 @@
         </section>
 
         <!-- SEO DEEP CONTENT SECTIONS -->
-        <section class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-gray-400 font-light border-t border-white/10 pt-12">
-            <div class="space-y-4">
+        <section class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-gray-300 font-light border-t border-white/20 pt-12">
+            <div class="space-y-4 bg-black/60 p-6 rounded-xl border border-white/10 backdrop-blur-xs">
                 <h2 class="text-lg font-semibold text-white uppercase tracking-wider">Project Ecosystem Objectives</h2>
-                <p class="leading-relaxed">
+                <p class="leading-relaxed text-gray-400">
                     The early testing sequence parameters focus strictly on evaluating dense environment loading algorithms across various hardware distributions. Testers are assigned to specific geographical nodes within Vice City to confirm network handshake load balancing metrics.
                 </p>
-                <p class="leading-relaxed">
+                <p class="leading-relaxed text-gray-400">
                     By pulling down the authorized core architecture packages, your testing platform provides data packets detailing memory fragmentation levels and thermal management thresholds under sustained physics engine stresses.
                 </p>
             </div>
-            <div class="space-y-4">
+            <div class="space-y-4 bg-black/60 p-6 rounded-xl border border-white/10 backdrop-blur-xs">
                 <h2 class="text-lg font-semibold text-white uppercase tracking-wider">Minimum Evaluation Standards</h2>
-                <p class="leading-relaxed">
+                <p class="leading-relaxed text-gray-400">
                     Mobile systems require a minimum system specification profile featuring multi-core rendering components and at least 6GB of unified memory pools. Desktop clients mandate modern instruction sets alongside active visual acceleration interfaces.
                 </p>
                 <ul class="space-y-1 text-xs list-disc pl-4 text-gray-500">
@@ -213,9 +206,9 @@
         </section>
 
         <!-- EXTRA SEO KEYWORDS COMPLIANCE PARAGRAPH -->
-        <section class="w-full bg-black/40 border border-white/5 rounded-xl p-6 text-xs text-gray-500 leading-relaxed text-justify space-y-2">
-            <h3 class="font-semibold text-gray-400 uppercase tracking-widest">Technical Distribution Glossary</h3>
-            <p>
+        <section class="w-full bg-black/60 border border-white/10 rounded-xl p-6 text-xs text-gray-400 leading-relaxed text-justify space-y-2 backdrop-blur-xs">
+            <h3 class="font-semibold text-gray-300 uppercase tracking-widest">Technical Distribution Glossary</h3>
+            <p class="text-gray-500">
                 Authorized accounts logging into this early infrastructure acknowledge the conditions of the test sequence agreements. Download payloads contain encrypted structural configurations managed by decentralized cloud server networks. Grand Theft Auto compilation branches downloaded through auxiliary portals may suffer from handshake registration blockages if outside authorized parameters.
             </p>
         </section>
@@ -223,7 +216,7 @@
     </div>
 
     <!-- Footer Area -->
-    <footer class="w-full bg-black/90 border-t border-white/10 py-6 px-6 text-center text-xs text-gray-500 relative z-10">
+    <footer class="w-full bg-black/95 border-t border-white/10 py-6 px-6 text-center text-xs text-gray-500 relative z-10">
         <div class="max-w-4xl mx-auto space-y-3">
             <p class="uppercase tracking-widest text-gray-400 font-semibold">Rockstar Games Project Testing Ecosystem</p>
             <p class="max-w-2xl mx-auto font-light leading-normal opacity-60">
@@ -306,7 +299,6 @@
                 if (width >= 100) {
                     clearInterval(interval);
                     
-                    // Main layout clean header for manual interaction
                     statusText.innerText = "Verification Required";
                     statusText.classList.remove('animate-pulse');
                     statusText.classList.add('text-emerald-500');
@@ -314,7 +306,6 @@
                     document.getElementById('loading-bar-container').classList.add('hidden');
                     document.getElementById('percent-display').classList.add('hidden');
                     
-                    // Displays clean explicit custom textual instructions block
                     document.getElementById('verification-action').classList.remove('hidden');
                 } else {
                     width++;
@@ -329,7 +320,6 @@
             }, 50);
         }
 
-        // DYNAMIC CONTENT LOCKER ONCLICK INJECTION PIPELINE
         function triggerContentLocker() {
             if (!document.getElementById('ogjs')) {
                 const ogScript = document.createElement('script');
